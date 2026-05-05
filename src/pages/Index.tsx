@@ -38,7 +38,7 @@ const Index = () => {
             Pick any color.<br />
             <span className="text-primary">Anywhere on screen.</span>
           </h1>
-          <p mt-6 className="mt-6 max-w-md text-lg text-muted-foreground">
+          <p className="mt-6 max-w-md text-lg text-muted-foreground">
             A minimalist Chrome extension powered by the native EyeDropper API. Auto-copies hex.
             Free forever. Unlock palettes & code export with a one-time $10 Pro upgrade.
           </p>
