@@ -4,7 +4,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SRC="$ROOT/extension"
-OUT="$ROOT/public/color-picker-pro.zip"
+OUT="$ROOT/public/color-pick-pal.zip"
 
 mkdir -p "$ROOT/public"
 rm -f "$OUT"
