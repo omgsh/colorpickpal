@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Color Picker Pro",
+  "version": "1.0.0",
+  "description": "Pick any color from your screen with the native EyeDropper. Auto-copies hex. Pro unlocks palettes & CSS export.",
+  "permissions": ["storage", "clipboardWrite"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
