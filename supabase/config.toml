@@ -1,10 +1,1 @@
 project_id = "eyzktcbgdndrlnqygjky"
-
-[functions.create-checkout]
-verify_jwt = false
-
-[functions.get-license]
-verify_jwt = false
-
-[functions.verify-license]
-verify_jwt = false

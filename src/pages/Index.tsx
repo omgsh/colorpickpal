@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Pipette, Palette, Code2, History, Check, Download } from "lucide-react";
+import { Pipette, Check, Download } from "lucide-react";
 
 const Index = () => {
   const handleDownload = () => {
@@ -27,9 +26,9 @@ const Index = () => {
           <Pipette className="h-5 w-5 text-primary" />
           Color Picker Pro
         </div>
-        <Link to="/upgrade" className="text-sm text-muted-foreground hover:text-foreground">
-          Upgrade
-        </Link>
+        <a href="#install" className="text-sm text-muted-foreground hover:text-foreground">
+          Install
+        </a>
       </header>
 
       <section className="container mx-auto grid gap-12 py-16 lg:grid-cols-2 lg:items-center">
@@ -39,16 +38,17 @@ const Index = () => {
             <span className="text-primary">Anywhere on screen.</span>
           </h1>
           <p className="mt-6 max-w-md text-lg text-muted-foreground">
-            A minimalist Chrome extension powered by the native EyeDropper API. Auto-copies hex.
-            Free forever. Unlock palettes & code export with a one-time $10 Pro upgrade.
+            A minimalist Chrome extension powered by the native EyeDropper API. Auto-copies the
+            value in your chosen format. Free forever. Pro adds palettes, all color formats,
+            complementary suggestions and code export.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Button size="lg" onClick={handleDownload}>
               <Download className="mr-2 h-4 w-4" /> Download Extension
             </Button>
-            <Link to="/upgrade">
-              <Button size="lg" variant="outline">Get Pro — $10</Button>
-            </Link>
+            <a href="#pricing">
+              <Button size="lg" variant="outline">See Pro features</Button>
+            </a>
           </div>
           <p className="mt-3 text-xs text-muted-foreground">
             Works in Chrome, Edge, Brave, Arc — any Chromium browser 95+.
@@ -75,14 +75,19 @@ const Index = () => {
         </Card>
       </section>
 
-      <section className="container mx-auto py-16">
+      <section id="pricing" className="container mx-auto py-16">
         <h2 className="mb-10 text-center text-3xl font-bold">Free vs Pro</h2>
         <div className="grid gap-6 md:grid-cols-2">
           <Card className="p-6">
             <h3 className="mb-1 text-lg font-semibold">Free</h3>
             <p className="mb-4 text-sm text-muted-foreground">Everything you need to pick & copy.</p>
             <ul className="space-y-2 text-sm">
-              {["Native EyeDropper picker","Auto-copy hex to clipboard","Last 5 picks history","Affiliate design resources"].map((f) => (
+              {[
+                "Native EyeDropper picker",
+                "Auto-copy in HEX or RGB",
+                "Last 5 picks history",
+                "Affiliate design resources",
+              ].map((f) => (
                 <li key={f} className="flex items-center gap-2"><Check className="h-4 w-4 text-primary" />{f}</li>
               ))}
             </ul>
@@ -93,6 +98,8 @@ const Index = () => {
             <ul className="space-y-2 text-sm">
               {[
                 "Everything in Free",
+                "All formats: HEX, RGB, HSL, CMYK",
+                "Complementary palette generator",
                 "Saved palettes",
                 "Export to CSS / SCSS / Tailwind / JSON",
                 "50-pick history",
@@ -101,12 +108,14 @@ const Index = () => {
                 <li key={f} className="flex items-center gap-2"><Check className="h-4 w-4 text-amber-600" />{f}</li>
               ))}
             </ul>
-            <Link to="/upgrade"><Button className="mt-5 w-full">Buy Pro</Button></Link>
+            <p className="mt-5 text-center text-xs text-muted-foreground">
+              Upgrade from inside the extension — secure checkout via ExtensionPay.
+            </p>
           </Card>
         </div>
       </section>
 
-      <section className="container mx-auto py-16">
+      <section id="install" className="container mx-auto py-16">
         <h2 className="mb-8 text-center text-3xl font-bold">Install in 4 steps</h2>
         <ol className="mx-auto max-w-xl space-y-4 text-sm">
           {[
