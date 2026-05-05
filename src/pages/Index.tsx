@@ -4,7 +4,7 @@ import { Pipette, Check, Download } from "lucide-react";
 
 const Index = () => {
   const handleDownload = () => {
-    fetch("/color-picker-pro.zip")
+    fetch("/color-pick-pal.zip")
       .then((res) => {
         if (!res.ok) throw new Error(`Download failed: ${res.status}`);
         return res.blob();
@@ -12,7 +12,7 @@ const Index = () => {
       .then((blob) => {
         const a = document.createElement("a");
         a.href = URL.createObjectURL(blob);
-        a.download = "color-picker-pro.zip";
+        a.download = "color-pick-pal.zip";
         a.click();
         URL.revokeObjectURL(a.href);
       })
