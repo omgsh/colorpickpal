@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Color Picker Pro",
+  "name": "Color Pick Pal",
   "version": "1.0.0",
   "description": "Pick any color from your screen with the native EyeDropper. Auto-copies. Pro: palettes, code export, complementary suggestions, multiple formats.",
   "permissions": ["storage", "clipboardWrite"],
