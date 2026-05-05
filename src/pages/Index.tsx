@@ -133,7 +133,10 @@ const Index = () => {
       </section>
 
       <footer className="border-t py-8 text-center text-xs text-muted-foreground">
-        Color Pick Pal · Built with the native EyeDropper API
+        <div>Color Pick Pal · Built with the native EyeDropper API</div>
+        <div className="mt-2">
+          <a href="/privacy" className="hover:text-foreground underline">Privacy Policy</a>
+        </div>
       </footer>
     </main>
   );
