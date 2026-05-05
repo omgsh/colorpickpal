@@ -3,7 +3,7 @@
 // Pro: HSL & CMYK, complementary palette, saved palettes, code export, 50 recents
 
 // IMPORTANT: keep this id in sync with background.js (your ExtensionPay extension id)
-const EXT_ID = "color-picker-pro";
+const EXT_ID = "color-pick-pal";
 const extpay = ExtPay(EXT_ID);
 
 const FREE_HISTORY = 5;
