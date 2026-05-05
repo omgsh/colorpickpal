@@ -1,4 +1,4 @@
-// Color Picker Pro — popup logic
+// Color Pick Pal — popup logic
 // Free: pick + auto-copy + 5 recents + HEX/RGB + affiliate links + upgrade CTA
 // Pro: HSL & CMYK, complementary palette, saved palettes, code export, 50 recents
 
