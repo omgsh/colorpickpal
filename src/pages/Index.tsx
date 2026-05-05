@@ -24,7 +24,7 @@ const Index = () => {
       <header className="container mx-auto flex items-center justify-between py-6">
         <div className="flex items-center gap-2 font-semibold">
           <Pipette className="h-5 w-5 text-primary" />
-          Color Picker Pro
+          Color Pick Pal
         </div>
         <a href="#install" className="text-sm text-muted-foreground hover:text-foreground">
           Install
@@ -59,7 +59,7 @@ const Index = () => {
           <div className="rounded-lg bg-muted/40 p-6">
             <div className="mx-auto w-[280px] rounded-xl border bg-background p-4 shadow-sm">
               <div className="mb-3 flex items-center justify-between">
-                <span className="text-sm font-semibold">Color Picker</span>
+                <span className="text-sm font-semibold">Color Pick Pal</span>
                 <span className="rounded-full bg-amber-400 px-2 py-0.5 text-[10px] font-bold text-amber-950">PRO</span>
               </div>
               <div className="h-20 rounded-lg" style={{ background: "linear-gradient(135deg,#6366f1,#ec4899)" }} />
@@ -133,7 +133,7 @@ const Index = () => {
       </section>
 
       <footer className="border-t py-8 text-center text-xs text-muted-foreground">
-        Color Picker Pro · Built with the native EyeDropper API
+        Color Pick Pal · Built with the native EyeDropper API
       </footer>
     </main>
   );
