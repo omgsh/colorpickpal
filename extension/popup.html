@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Color Picker Pro</title>
+  <style>
+    :root {
+      --bg: #fbfbfd;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e5e7eb;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --pro: #f59e0b;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 320px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .app { padding: 16px; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+    .pro-badge {
+      background: var(--pro);
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      display: none;
+    }
+    .pro-badge.active { display: inline-block; }
+    .swatch {
+      width: 100%;
+      height: 96px;
+      border-radius: 12px;
+      background: #e5e7eb;
+      border: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+    .hex-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px 0 14px;
+    }
+    .hex {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      user-select: all;
+    }
+    .copied {
+      font-size: 11px;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .copied.show { opacity: 1; }
+    button.primary {
+      width: 100%;
+      padding: 11px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    button.primary:hover { background: var(--accent-hover); }
+    button.primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 16px 0 8px;
+    }
+    .recents {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .recent-swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      position: relative;
+    }
+    .recent-swatch:hover { transform: scale(1.08); }
+    .recent-swatch.empty {
+      background: transparent;
+      border: 1px dashed var(--border);
+    }
+    .pro-card {
+      margin-top: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+    }
+    .pro-card .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    select, input[type="text"] {
+      flex: 1;
+      padding: 7px 9px;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: white;
+      color: var(--text);
+      font-family: inherit;
+    }
+    button.secondary {
+      padding: 7px 10px;
+      font-size: 12px;
+      background: var(--text);
+      color: white;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    button.ghost {
+      padding: 4px 8px;
+      font-size: 11px;
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--muted);
+    }
+    .palette-list { margin-top: 8px; max-height: 110px; overflow-y: auto; }
+    .palette-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5px 0;
+      border-top: 1px solid var(--border);
+    }
+    .palette-name { font-weight: 500; font-size: 12px; }
+    .palette-count { font-size: 10px; color: var(--muted); margin-left: 6px; }
+    .palette-actions { display: flex; gap: 4px; }
+    .affiliates {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+    .affiliates a {
+      font-size: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.04);
+    }
+    .affiliates a:hover { color: var(--accent); }
+    .upgrade {
+      margin-top: 12px;
+      padding: 10px;
+      background: linear-gradient(135deg, #fef3c7, #fde68a);
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      border: 1px solid #fcd34d;
+    }
+    .upgrade strong { display: block; font-size: 12px; color: #78350f; margin-bottom: 2px; }
+    .upgrade span { font-size: 10px; color: #92400e; }
+    .license-input { display: none; margin-top: 8px; gap: 6px; }
+    .license-input.show { display: flex; }
+    .pro-only { display: none; }
+    .pro-only.active { display: block; }
+    .free-only.hidden { display: none; }
+    .error { color: #dc2626; font-size: 11px; margin-top: 4px; }
+    .footer-link {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 10px;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .footer-link:hover { color: var(--accent); text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>Color Picker</h1>
+      <span class="pro-badge" id="proBadge">PRO</span>
+    </header>
+
+    <div class="swatch" id="swatch"></div>
+    <div class="hex-row">
+      <span class="hex" id="hex">#FFFFFF</span>
+      <span class="copied" id="copied">Copied!</span>
+    </div>
+
+    <button class="primary" id="pickBtn">Pick Color</button>
+    <div class="error" id="error"></div>
+
+    <div class="section-label">Recent</div>
+    <div class="recents" id="recents"></div>
+
+    <!-- PRO panel -->
+    <div class="pro-card pro-only" id="proPanel">
+      <div class="row">
+        <input type="text" id="paletteName" placeholder="Palette name" />
+        <button class="secondary" id="savePaletteBtn">Save</button>
+      </div>
+      <div class="palette-list" id="paletteList"></div>
+      <div class="row" id="exportRow" style="margin-top: 10px; display:none;">
+        <select id="exportFormat">
+          <option value="css">CSS variables</option>
+          <option value="scss">SCSS variables</option>
+          <option value="tailwind">Tailwind config</option>
+          <option value="json">JSON</option>
+        </select>
+        <button class="secondary" id="exportBtn">Copy</button>
+      </div>
+    </div>
+
+    <!-- Affiliate strip (free only) -->
+    <div class="affiliates free-only" id="affiliates"></div>
+
+    <!-- Upgrade CTA (free only) -->
+    <div class="upgrade free-only" id="upgradeBtn">
+      <strong>Upgrade to Pro — $10</strong>
+      <span>Saved palettes • CSS export • 50-pick history</span>
+    </div>
+
+    <div class="license-input free-only" id="licenseInput">
+      <input type="text" id="licenseKey" placeholder="Paste license key" />
+      <button class="secondary" id="activateBtn">Activate</button>
+    </div>
+
+    <div class="footer-link free-only" id="haveKeyLink">Already have a license key?</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
