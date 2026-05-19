@@ -2,22 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Pipette, Check, Download } from "lucide-react";
 
+const CHROME_STORE_URL =
+  "https://chromewebstore.google.com/detail/color-pick-pal/kmhflabmkfmnmgkbockcmaebpmlnnimf";
+
 const Index = () => {
-  const handleDownload = () => {
-    fetch("/color-pick-pal.zip")
-      .then((res) => {
-        if (!res.ok) throw new Error(`Download failed: ${res.status}`);
-        return res.blob();
-      })
-      .then((blob) => {
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "color-pick-pal.zip";
-        a.click();
-        URL.revokeObjectURL(a.href);
-      })
-      .catch((err) => alert(err.message));
-  };
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -43,8 +31,10 @@ const Index = () => {
             complementary suggestions and code export.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Button size="lg" onClick={handleDownload}>
-              <Download className="mr-2 h-4 w-4" /> Download Extension
+            <Button size="lg" asChild>
+              <a href={CHROME_STORE_URL} target="_blank" rel="noopener noreferrer">
+                <Download className="mr-2 h-4 w-4" /> Add to Chrome
+              </a>
             </Button>
             <a href="#pricing">
               <Button size="lg" variant="outline">See Pro features</Button>
