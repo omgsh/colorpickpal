@@ -11,10 +11,19 @@ const Index = () => {
     <main className="min-h-screen bg-background text-foreground">
       <header className="container mx-auto flex items-center justify-between py-6">
         <div className="flex items-center gap-2 font-semibold">
-          <Pipette className="h-5 w-5 text-primary" />
-          Color Pick Pal
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 via-pink-500 to-amber-400 shadow-sm">
+            <Pipette className="h-4 w-4 text-white" />
+          </span>
+          <span className="bg-gradient-to-r from-indigo-500 via-pink-500 to-amber-500 bg-clip-text text-transparent">
+            Color Pick Pal
+          </span>
         </div>
-        <a href={CHROME_STORE_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">
+        <a
+          href={CHROME_STORE_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700"
+        >
           Install
         </a>
       </header>
