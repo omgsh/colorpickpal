@@ -14,7 +14,7 @@ const Index = () => {
           <Pipette className="h-5 w-5 text-primary" />
           Color Pick Pal
         </div>
-        <a href="#install" className="text-sm text-muted-foreground hover:text-foreground">
+        <a href={CHROME_STORE_URL} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground">
           Install
         </a>
       </header>
@@ -105,22 +105,6 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="install" className="container mx-auto py-16">
-        <h2 className="mb-8 text-center text-3xl font-bold">Install in 4 steps</h2>
-        <ol className="mx-auto max-w-xl space-y-4 text-sm">
-          {[
-            "Download the .zip and unzip it.",
-            "Open chrome://extensions in Chrome (or any Chromium browser).",
-            "Toggle Developer mode in the top-right corner.",
-            'Click "Load unpacked" and select the unzipped folder.',
-          ].map((step, i) => (
-            <li key={i} className="flex gap-3 rounded-lg border p-4">
-              <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary font-semibold text-primary-foreground">{i + 1}</span>
-              <span className="self-center">{step}</span>
-            </li>
-          ))}
-        </ol>
-      </section>
 
       <footer className="border-t py-8 text-center text-xs text-muted-foreground">
         <div>Color Pick Pal · Built with the native EyeDropper API</div>
